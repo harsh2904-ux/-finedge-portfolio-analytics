@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  --fin-bg: #F8FAFC;
+  --fin-card: #FFFFFF;
+  --fin-card-hover: #F1F5F9;
+  --fin-panel: #F1F5F9;
+  --fin-border: #E2E8F0;
+  --fin-border-light: #CBD5E1;
+  --fin-muted: #64748B;
+  --fin-text: #0F172A;
+}
+
+html.dark, :root.dark {
+  --fin-bg: #0B0E14;
+  --fin-card: #121824;
+  --fin-card-hover: #172030;
+  --fin-panel: #1A2336;
+  --fin-border: #202B3E;
+  --fin-border-light: #2C3A54;
+  --fin-muted: #8A97AB;
+  --fin-text: #F1F5F9;
+}
+
+body {
+  background-color: var(--fin-bg);
+  color: var(--fin-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Light mode overrides for text-white elements that are not colored buttons or badges */
+html:not(.dark) h1.text-white,
+html:not(.dark) h2.text-white,
+html:not(.dark) h3.text-white,
+html:not(.dark) h4.text-white,
+html:not(.dark) h5.text-white,
+html:not(.dark) h6.text-white,
+html:not(.dark) strong.text-white,
+html:not(.dark) .font-bold.text-white:not(button *):not(.bg-fin-blue *):not(.bg-blue-600 *):not(.bg-fin-emerald *):not(.bg-fin-red *),
+html:not(.dark) span.text-white:not(button *):not(.bg-fin-blue *):not(.bg-blue-600 *):not(.bg-fin-emerald *):not(.bg-fin-red *),
+html:not(.dark) div.text-white:not(button *):not(.bg-fin-blue *):not(.bg-blue-600 *):not(.bg-fin-emerald *):not(.bg-fin-red *),
+html:not(.dark) td.text-white:not(button *),
+html:not(.dark) th.text-white:not(button *) {
+  color: #0F172A !important;
+}
+
+/* Custom Financial Terminal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--fin-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fin-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fin-border-light);
+}
+
+/* Pulse indicator for live data */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.live-indicator {
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

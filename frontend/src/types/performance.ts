@@ -1,0 +1,34 @@
+export interface PerformanceMetrics {
+  cagr?: number;
+  total_return?: number;
+  totalReturn?: number;
+  annualized_return?: number;
+  annualizedReturn?: number;
+  benchmark_return?: number;
+  benchmarkReturn?: number;
+  benchmarkTotalReturn?: number;
+  excess_return?: number;
+  excessReturn?: number;
+  tracking_error?: number;
+  trackingError?: number;
+  information_ratio?: number;
+  informationRatio?: number;
+  sharpe_ratio?: number;
+  sharpeRatio?: number;
+  sortino_ratio?: number;
+  sortinoRatio?: number;
+  treynor_ratio?: number;
+  treynorRatio?: number;
+  calmar_ratio?: number;
+  calmarRatio?: number;
+  alpha?: number;
+  beta?: number;
+  r_squared?: number;
+  rSquared?: number;
+  best_day_return?: number;
+  worst_day_return?: number;
+  positive_trading_days_ratio?: number;
+  dates?: string[];
+  cumulativeReturns?: number[];
+  benchmarkReturns?: number[];
+}

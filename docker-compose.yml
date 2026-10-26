@@ -1,0 +1,62 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: portfolio_analytics_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: portfolio_analytics
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d portfolio_analytics"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  python-analytics:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    container_name: portfolio_analytics_python
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@postgres:5432/portfolio_analytics
+      ANALYTICS_PORT: 8001
+      ANALYTICS_HOST: 0.0.0.0
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: portfolio_analytics_backend
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: portfolio_analytics
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PYTHON_ANALYTICS_URL: http://python-analytics:8001
+      JWT_SECRET: 4c8b21e89f70d5e23c7a10984f18376483921ad581372b389f41728493729810
+      FRONTEND_URL: http://localhost:5173
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      python-analytics:
+        condition: service_started
+
+volumes:
+  postgres_data:
+    driver: local

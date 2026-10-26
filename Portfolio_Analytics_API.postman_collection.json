@@ -1,0 +1,993 @@
+{
+  "info": {
+    "_postman_id": "b1a2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+    "name": "Portfolio Analytics Backend API (Spring Boot)",
+    "description": "Production-grade REST API collection for Multi-Asset Investment Portfolio Risk & Performance Analytics system.\n\nCovers Authentication, Asset Management, Market Data, Portfolio Management, Holdings, Transactions, Valuation, Performance Analytics, Risk Analytics, Diversification, Markowitz Optimization, Efficient Frontier, Monte Carlo Simulation, Scenario Shocks, and Macro Stress Testing.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "jwtToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refreshToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "portfolioId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "assetId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "holdingId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "Register New User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Harsh\",\n  \"email\": \"user@example.com\",\n  \"password\": \"secure-password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.success && jsonData.data) {",
+                  "    pm.collectionVariables.set('jwtToken', jsonData.data.accessToken);",
+                  "    pm.collectionVariables.set('refreshToken', jsonData.data.refreshToken);",
+                  "    console.log('JWT Token saved:', jsonData.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"secure-password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User Profile (Me)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh Access Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/refresh",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "refresh"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Assets",
+      "item": [
+        {
+          "name": "List Assets (Filtered)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/assets?assetClass=EQUITY",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assets"],
+              "query": [
+                {
+                  "key": "assetClass",
+                  "value": "EQUITY"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Asset by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/assets/{{assetId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assets", "{{assetId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Asset",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"symbol\": \"MSFT\",\n  \"providerSymbol\": \"MSFT\",\n  \"name\": \"Microsoft Corporation\",\n  \"assetClass\": \"EQUITY\",\n  \"sector\": \"Technology\",\n  \"currency\": \"USD\",\n  \"exchange\": \"NASDAQ\",\n  \"country\": \"US\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/assets",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assets"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Asset",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Microsoft Corp.\",\n  \"assetClass\": \"EQUITY\",\n  \"sector\": \"Technology\",\n  \"currency\": \"USD\",\n  \"exchange\": \"NASDAQ\",\n  \"country\": \"US\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/assets/{{assetId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assets", "{{assetId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate Asset",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/assets/{{assetId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assets", "{{assetId}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Market Data",
+      "item": [
+        {
+          "name": "Get Latest Price",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/market/AAPL/latest",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "market", "AAPL", "latest"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Market History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/market/AAPL/history?startDate=2024-01-01&endDate=2026-10-07&limit=250",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "market", "AAPL", "history"],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2024-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-10-07"
+                },
+                {
+                  "key": "limit",
+                  "value": "250"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Portfolio Management",
+      "item": [
+        {
+          "name": "List User Portfolios",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Portfolio",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.success && jsonData.data) {",
+                  "    pm.collectionVariables.set('portfolioId', jsonData.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Global Multi-Asset Growth\",\n  \"baseCurrency\": \"USD\",\n  \"benchmarkSymbol\": \"SPY\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Portfolio by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Portfolio",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Global All-Weather Portfolio\",\n  \"baseCurrency\": \"USD\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Mark-to-Market Valuation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/valuation",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "valuation"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Portfolio",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. Holdings",
+      "item": [
+        {
+          "name": "List Portfolio Holdings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/holdings",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "holdings"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Holding",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"symbol\": \"AAPL\",\n  \"quantity\": 15.0,\n  \"averageCost\": 210.50,\n  \"targetWeight\": 0.25\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/holdings",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "holdings"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Holding",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 20.0,\n  \"averageCost\": 215.00,\n  \"targetWeight\": 0.30\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/holdings/{{holdingId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "holdings", "{{holdingId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Holding",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/holdings/{{holdingId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "holdings", "{{holdingId}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6. Transactions",
+      "item": [
+        {
+          "name": "List Transactions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/transactions?page=0&size=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "transactions"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Record BUY Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"symbol\": \"AAPL\",\n  \"transactionType\": \"BUY\",\n  \"quantity\": 10,\n  \"price\": 225.50,\n  \"transactionCost\": 1.50\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/transactions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "transactions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Record SELL Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"symbol\": \"AAPL\",\n  \"transactionType\": \"SELL\",\n  \"quantity\": 5,\n  \"price\": 235.00,\n  \"transactionCost\": 1.50\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/transactions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "transactions"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "7. Analytics - Performance",
+      "item": [
+        {
+          "name": "Get Portfolio Performance Metrics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/performance?lookback=1Y",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "performance"],
+              "query": [
+                {
+                  "key": "lookback",
+                  "value": "1Y"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "8. Analytics - Risk",
+      "item": [
+        {
+          "name": "Get Risk Metrics (Sharpe, Sortino, Beta, Alpha)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/risk?lookback=1Y",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "risk"],
+              "query": [
+                {
+                  "key": "lookback",
+                  "value": "1Y"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Value at Risk (VaR & CVaR)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/risk/var?confidence=0.95",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "risk", "var"],
+              "query": [
+                {
+                  "key": "confidence",
+                  "value": "0.95"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Drawdown Analysis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/risk/drawdown?lookback=1Y",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "risk", "drawdown"],
+              "query": [
+                {
+                  "key": "lookback",
+                  "value": "1Y"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "9. Analytics - Diversification",
+      "item": [
+        {
+          "name": "Get Asset Allocation Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/allocation",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "allocation"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Correlation & Covariance Matrix",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/correlation?lookback=1Y",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "correlation"],
+              "query": [
+                {
+                  "key": "lookback",
+                  "value": "1Y"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Component Risk Contribution",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/risk-contribution?lookback=1Y",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "risk-contribution"],
+              "query": [
+                {
+                  "key": "lookback",
+                  "value": "1Y"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "10. Analytics - Optimization",
+      "item": [
+        {
+          "name": "Run Portfolio Optimization (Max Sharpe)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"MAX_SHARPE\",\n  \"lookback\": \"3Y\",\n  \"maxWeight\": 0.35\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/optimization",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "optimization"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Efficient Frontier",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"simulations\": 2000,\n  \"lookback\": \"3Y\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/efficient-frontier",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "efficient-frontier"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "11. Analytics - Simulation",
+      "item": [
+        {
+          "name": "Run Monte Carlo Simulation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"simulations\": 5000,\n  \"horizonDays\": 252\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/monte-carlo",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "monte-carlo"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "12. Analytics - Scenario & Stress Testing",
+      "item": [
+        {
+          "name": "Run Hypothetical Scenario Shocks",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shocks\": {\n    \"EQUITY\": -0.25,\n    \"GOLD\": 0.15,\n    \"BOND\": 0.05,\n    \"REIT\": -0.15\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/scenario",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "scenario"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Run Historical Macro Stress Tests",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwtToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scenarios\": [\n    \"2008 Global Financial Crisis\",\n    \"2020 COVID-19 Liquidity Shock\",\n    \"Tech Stagflation Shock\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolios/{{portfolioId}}/stress-tests",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolios", "{{portfolioId}}", "stress-tests"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "13. System Health & Observability",
+      "item": [
+        {
+          "name": "Actuator Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["actuator", "health"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OpenAPI Specification JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v3/api-docs",
+              "host": ["{{baseUrl}}"],
+              "path": ["v3", "api-docs"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: false
+
+  flyway:
+    enabled: false
+
+analytics:
+  python:
+    base-url: http://localhost:8001
+    connect-timeout-ms: 1000
+    read-timeout-ms: 2000
+
+security:
+  jwt:
+    secret: 4c8b21e89f70d5e23c7a10984f18376483921ad581372b389f41728493729810
+    expiration-ms: 3600000
+    refresh-expiration-ms: 86400000

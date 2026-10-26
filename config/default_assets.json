@@ -1,0 +1,123 @@
+[
+  {
+    "symbol": "NIFTYBEES",
+    "provider_symbol": "NIFTYBEES",
+    "name": "Nippon India ETF Nifty 50 BeES",
+    "asset_class": "Equity / ETF",
+    "sector": "Broad Market Benchmark",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "RELIANCE",
+    "provider_symbol": "RELIANCE",
+    "name": "Reliance Industries Limited",
+    "asset_class": "Equity",
+    "sector": "Energy & Conglomerate",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "TCS",
+    "provider_symbol": "TCS",
+    "name": "Tata Consultancy Services Limited",
+    "asset_class": "Equity",
+    "sector": "Information Technology",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "HDFCBANK",
+    "provider_symbol": "HDFCBANK",
+    "name": "HDFC Bank Limited",
+    "asset_class": "Equity",
+    "sector": "Financial Services",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "INFY",
+    "provider_symbol": "INFY",
+    "name": "Infosys Limited",
+    "asset_class": "Equity",
+    "sector": "Information Technology",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "ICICIBANK",
+    "provider_symbol": "ICICIBANK",
+    "name": "ICICI Bank Limited",
+    "asset_class": "Equity",
+    "sector": "Financial Services",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "TATAMOTORS",
+    "provider_symbol": "TATAMOTORS",
+    "name": "Tata Motors Limited",
+    "asset_class": "Equity",
+    "sector": "Automobile",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "ITC",
+    "provider_symbol": "ITC",
+    "name": "ITC Limited",
+    "asset_class": "Equity",
+    "sector": "Consumer Goods & FMCG",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "provider_symbol": "BHARTIARTL",
+    "name": "Bharti Airtel Limited",
+    "asset_class": "Equity",
+    "sector": "Telecommunications",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "LT",
+    "provider_symbol": "LT",
+    "name": "Larsen & Toubro Limited",
+    "asset_class": "Equity",
+    "sector": "Construction & Infrastructure",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  },
+  {
+    "symbol": "GOLDBEES",
+    "provider_symbol": "GOLDBEES",
+    "name": "Nippon India ETF Gold BeES",
+    "asset_class": "Commodity / Gold ETF",
+    "sector": "Precious Metals",
+    "currency": "INR",
+    "exchange": "NSE",
+    "country": "IN",
+    "is_active": true
+  }
+]

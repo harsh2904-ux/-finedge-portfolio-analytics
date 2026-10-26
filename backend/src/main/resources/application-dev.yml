@@ -1,0 +1,25 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:sqlite:portfolio_analytics.db}
+    driver-class-name: ${DATASOURCE_DRIVER:org.sqlite.JDBC}
+    username: ${DATASOURCE_USERNAME:}
+    password: ${DATASOURCE_PASSWORD:}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.community.dialect.SQLiteDialect}
+        show_sql: false
+
+  flyway:
+    enabled: false
+
+analytics:
+  python:
+    base-url: ${PYTHON_ANALYTICS_URL:http://localhost:8001}
