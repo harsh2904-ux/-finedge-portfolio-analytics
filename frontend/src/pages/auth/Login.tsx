@@ -86,7 +86,7 @@ export const Login: React.FC = () => {
         <div className="my-auto space-y-6 max-w-md">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fin-card border border-fin-border text-xs text-fin-emerald font-mono">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Institutional-Grade Analytics</span>
+            <span>Smart Quantitative Analytics</span>
           </div>
 
           <h2 className="text-3xl font-bold tracking-tight text-white leading-snug">

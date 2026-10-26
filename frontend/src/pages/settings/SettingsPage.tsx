@@ -107,7 +107,7 @@ export const SettingsPage: React.FC = () => {
             <Select
               label="Terminal Theme / Screen Mode"
               options={[
-                { value: 'dark', label: '🌙 Dark Mode (Institutional Dark Terminal)' },
+                { value: 'dark', label: '🌙 Dark Mode (Dark Terminal)' },
                 { value: 'light', label: '☀️ Light Mode (Clean Modern Light)' },
               ]}
               value={theme}

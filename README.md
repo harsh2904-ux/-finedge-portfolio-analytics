@@ -6,7 +6,7 @@
 [![Tests](https://img.shields.io/badge/Unit%20Tests-42%20Passed-brightgreen.svg)]()
 [![Market](https://img.shields.io/badge/Market-NSE%20India%20%7C%20INR%20%E2%82%B9-red.svg)](https://www.nseindia.com/)
 
-An institutional-grade, full-stack investment portfolio analytics and quantitative risk management platform built for the **Indian Stock Market (NSE)**. 
+An advanced, full-stack investment portfolio analytics and quantitative risk management platform built for the **Indian Stock Market (NSE)**. 
 
 FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-performance **Python FastAPI** quantitative computing engine, and a Bloomberg/Zerodha-inspired **React 19** financial terminal with instant **Light Mode (☀️) & Dark Mode (🌙)** support.
 
@@ -17,7 +17,7 @@ FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-p
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │  TIER 1: WEB TERMINAL FRONTEND (React 19 + TypeScript + Tailwind CSS) │
-│  • Institutional FinTech Terminal with Light ☀️ / Dark 🌙 Themes      │
+│  • Modern FinTech Terminal with Light ☀️ / Dark 🌙 Themes             │
 │  • Interactive ECharts (Candlesticks, Efficient Frontier, Donut, Fan)  │
 │  • Zustand Global State + TanStack Query Automatic Cache & Invalidation│
 └───────────────────────────────────┬────────────────────────────────────┘
@@ -51,7 +51,7 @@ FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-p
 - **Transactional Ledger**: Automatically recalculates volume-weighted average cost basis and real-time Unrealized P&L in Indian Rupees (`₹`) upon recording buy or sell orders.
 - **Live Market Watch**: Real-time price tracking with interactive daily OHLC candlestick charts and volume bars.
 
-### 🛡️ Institutional Risk & Safety Limits
+### 🛡️ Risk & Safety Limits
 - **Value-at-Risk (VaR)**: 95% and 99% parametric and historical maximum loss forecasts.
 - **Conditional VaR (Expected Shortfall)**: Quantifies the average loss magnitude in the worst 5% tail risk events.
 - **Maximum Drawdown (MDD)**: Historical peak-to-trough drop tracking and recovery duration analysis.
@@ -74,7 +74,7 @@ FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-p
   - **2020 COVID Liquidity Shock** (rapid market-wide crash)
   - **Tech Stagflation & Multiple Contraction**
 
-### 🎨 Institutional User Experience
+### 🎨 Clean User Experience
 - **Light Mode (☀️) & Dark Mode (🌙)** with seamless header toggle switch and local persistence.
 - High-contrast typography: Dark slate (`#0F172A`) on white cards in Light Mode; Crisp slate (`#F1F5F9`) on dark panels in Dark Mode.
 - Responsive layout with collapsible sidebar and mobile drawer navigation.

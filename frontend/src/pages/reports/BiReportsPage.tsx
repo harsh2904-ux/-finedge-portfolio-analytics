@@ -44,7 +44,7 @@ export const BiReportsPage: React.FC = () => {
       <EmptyState
         icon={<FileBarChart className="w-8 h-8 text-fin-blue" />}
         title="No Portfolio Selected"
-        description="Select an active portfolio to generate the institutional executive deck."
+        description="Select an active portfolio to generate the executive report deck."
       />
     );
   }
@@ -272,7 +272,7 @@ export const BiReportsPage: React.FC = () => {
 
         {/* Legal Disclaimer Footer */}
         <div className="pt-6 border-t border-fin-border text-[10px] text-fin-muted leading-relaxed font-sans">
-          DISCLAIMER: This document is produced for institutional portfolio performance tracking and risk management
+          DISCLAIMER: This document is produced for portfolio performance tracking and risk management
           purposes only. Historical performance figures are not indicative of future market returns. Quantitative models
           utilize mark-to-market valuations provided by Twelve Data and Markowitz Modern Portfolio Theory analytics engines.
         </div>

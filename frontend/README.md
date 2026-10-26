@@ -2,7 +2,7 @@
 
 **Multi-Asset Investment Portfolio Risk & Performance Analytics**
 
-An institutional-grade dark financial analytics web terminal built with **React 19**, **TypeScript**, **Tailwind CSS**, and **Apache ECharts**. Consumes the Spring Boot REST API layer (Part 2) backed by the Python Quantitative Analytics Engine (Part 1).
+An advanced dark financial analytics web terminal built with **React 19**, **TypeScript**, **Tailwind CSS**, and **Apache ECharts**. Consumes the Spring Boot REST API layer (Part 2) backed by the Python Quantitative Analytics Engine (Part 1).
 
 ---
 
@@ -32,7 +32,7 @@ An institutional-grade dark financial analytics web terminal built with **React 
 ```
 
 - **Strict Separation of Concerns**: React does zero financial math duplication; all quantitative outputs (Markowitz efficient frontier, Monte Carlo Brownian motion cones, Value at Risk, stress test drawdowns) originate from Spring Boot and the Python analytics engine.
-- **Institutional Dark Theme**: Tailored terminal palette (`#0B0E14` background, `#121824` cards, `#202B3E` borders, `#3B82F6` primary blue, `#10B981` profit emerald, `#EF4444` risk red).
+- **Dark & Light Themes**: Tailored terminal palette (`#0B0E14` background, `#121824` cards, `#202B3E` borders, `#3B82F6` primary blue, `#10B981` profit emerald, `#EF4444` risk red) alongside a clean light mode.
 
 ---
 
@@ -51,7 +51,7 @@ An institutional-grade dark financial analytics web terminal built with **React 
 | **Portfolio Optimization** | `/optimization` | Markowitz Modern Portfolio Theory (MPT), Efficient Frontier interactive curve, optimal rebalance deltas |
 | **Monte Carlo Simulation** | `/simulation` | Geometric Brownian Motion fan chart (5th to 95th percentiles), terminal loss probability |
 | **Stress Testing** | `/scenarios` | Historical crisis replay (2008 GFC, 2020 COVID, 2022 Fed shock) & custom macro factor shock builder |
-| **BI Factsheet Report** | `/reports` | Print/PDF ready institutional monthly factsheet and executive committee deck |
+| **BI Factsheet Report** | `/reports` | Print/PDF ready executive monthly factsheet and summary deck |
 | **Settings & Diagnostics** | `/settings` | User profile, preferences, live ping diagnostics for Spring Boot (8080) and FastAPI (8001) |
 
 ---
