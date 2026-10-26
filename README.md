@@ -1,4 +1,4 @@
-# FinEdge — Institutional Indian Stock Portfolio & Quantitative Risk Analytics Platform
+# FinEdge — Indian Portfolio Analytics Terminal
 
 [![Frontend](https://img.shields.io/badge/Frontend-React%2019%20%7C%20TypeScript%20%7C%20Tailwind-blue.svg)](https://react.dev/)
 [![Backend](https://img.shields.io/badge/Backend-Spring%20Boot%203%20%7C%20Java%2021-orange.svg)](https://spring.io/projects/spring-boot)
