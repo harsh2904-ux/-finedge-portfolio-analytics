@@ -69,7 +69,7 @@ export const Register: React.FC = () => {
           <div>
             <h1 className="text-lg font-bold tracking-tight text-white leading-tight">FINEDGE</h1>
             <p className="text-xs font-mono text-fin-blue font-semibold uppercase">
-              Indian Portfolio Risk &amp; Analytics
+              Portfolio Risk &amp; Analytics
             </p>
           </div>
         </div>

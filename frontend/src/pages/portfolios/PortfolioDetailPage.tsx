@@ -529,7 +529,7 @@ export const PortfolioDetailPage: React.FC = () => {
           {/* Quick Stock Selector Pills */}
           <div>
             <label className="block text-xs font-medium text-fin-text mb-1.5">
-              Quick Select Indian Stock / ETF:
+              Quick Select Stock / ETF:
             </label>
             <div className="flex flex-wrap gap-1.5 p-2 rounded-lg bg-fin-panel border border-fin-border">
               {POPULAR_NSE_STOCKS.map((stock) => (

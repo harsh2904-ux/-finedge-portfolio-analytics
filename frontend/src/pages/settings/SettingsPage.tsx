@@ -87,7 +87,7 @@ export const SettingsPage: React.FC = () => {
             <Select
               label="Default Base Currency"
               options={[
-                { value: 'INR', label: 'INR (₹) - Indian Rupee' },
+                { value: 'INR', label: 'INR (₹) - Rupee' },
                 { value: 'USD', label: 'USD ($) - US Dollar' },
                 { value: 'EUR', label: 'EUR (€) - Euro' },
               ]}

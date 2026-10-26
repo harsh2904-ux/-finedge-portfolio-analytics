@@ -2,7 +2,7 @@
 title FinEdge Platform Launcher
 color 0A
 echo ======================================================================
-echo       Starting FinEdge: Indian Portfolio & Risk Analytics Platform
+echo       Starting FinEdge: Portfolio Analytics & Risk Platform
 echo ======================================================================
 echo.
 

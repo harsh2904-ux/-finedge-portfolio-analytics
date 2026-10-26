@@ -122,7 +122,7 @@ export const PortfoliosPage: React.FC = () => {
             ₹
           </div>
           <div>
-            <div className="font-semibold text-white">Indian Stock & ETF Portfolios</div>
+            <div className="font-semibold text-white">Stock &amp; ETF Portfolios</div>
             <div className="text-fin-muted">
               Holdings are denominated in INR (₹) and benchmarked against the Nifty 50 ETF (NIFTYBEES).
             </div>
@@ -187,7 +187,7 @@ export const PortfoliosPage: React.FC = () => {
                     {portfolio.name}
                   </h3>
                   <p className="text-xs text-fin-muted mt-1.5 line-clamp-2">
-                    {portfolio.description || 'Indian equity and multi-asset investment portfolio.'}
+                    {portfolio.description || 'Equity and multi-asset investment portfolio.'}
                   </p>
                 </div>
 
@@ -240,7 +240,7 @@ export const PortfoliosPage: React.FC = () => {
             <Select
               label="Base Currency"
               options={[
-                { value: 'INR', label: 'INR (₹) - Indian Rupee' },
+                { value: 'INR', label: 'INR (₹) - Rupee' },
                 { value: 'USD', label: 'USD ($) - US Dollar' },
                 { value: 'EUR', label: 'EUR (€) - Euro' },
                 { value: 'GBP', label: 'GBP (£) - British Pound' },

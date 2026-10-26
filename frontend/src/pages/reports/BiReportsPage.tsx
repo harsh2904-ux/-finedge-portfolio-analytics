@@ -73,7 +73,7 @@ export const BiReportsPage: React.FC = () => {
             1-Click PDF Report & Portfolio Factsheet
           </h1>
           <p className="text-xs text-fin-muted mt-0.5">
-            Download or print a clean 1-page summary of all your Indian stocks, profits, and safety ratings
+            Download or print a clean 1-page summary of all your stocks, profits, and safety ratings
           </p>
         </div>
 

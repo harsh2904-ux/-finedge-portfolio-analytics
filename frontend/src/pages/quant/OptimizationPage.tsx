@@ -148,7 +148,7 @@ export const OptimizationPage: React.FC = () => {
           </div>
           <div className="text-sm font-bold text-white">Option 2: Maximum Capital Safety</div>
           <div className="text-xs text-fin-muted mt-1 leading-relaxed">
-            Protects your hard-earned money from big market crashes by favoring low-volatility Indian stocks and Gold ETF.
+            Protects your hard-earned money from big market crashes by favoring low-volatility stocks and Gold ETF.
           </div>
         </button>
 
@@ -344,7 +344,7 @@ export const OptimizationPage: React.FC = () => {
             <div className="lg:col-span-2">
               <Card
                 title="Recommended Rebalancing Actions"
-                subtitle="Calculated Indian stock weight adjustments to reach the optimal frontier"
+                subtitle="Calculated stock weight adjustments to reach the optimal frontier"
               >
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[680px] text-left border-collapse">
@@ -415,7 +415,7 @@ export const OptimizationPage: React.FC = () => {
           <div className="flex items-center gap-3">
             <Sparkles className="w-5 h-5 text-fin-blue" />
             <span>
-              Select your preferred strategy preset above and click <strong className="text-white">"Compute Optimal Allocation"</strong> to calculate your personalized Indian equity weights.
+              Select your preferred strategy preset above and click <strong className="text-white">"Compute Optimal Allocation"</strong> to calculate your personalized optimal weights.
             </span>
           </div>
         </div>

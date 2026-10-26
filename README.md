@@ -1,12 +1,12 @@
-# FinEdge — Indian Portfolio Analytics Terminal
+# FinEdge — Portfolio Analytics & Quantitative Risk Terminal
 
 [![Frontend](https://img.shields.io/badge/Frontend-React%2019%20%7C%20TypeScript%20%7C%20Tailwind-blue.svg)](https://react.dev/)
 [![Backend](https://img.shields.io/badge/Backend-Spring%20Boot%203%20%7C%20Java%2021-orange.svg)](https://spring.io/projects/spring-boot)
 [![Analytics](https://img.shields.io/badge/Quant%20Engine-Python%20FastAPI%20%7C%20SciPy-green.svg)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/Unit%20Tests-42%20Passed-brightgreen.svg)]()
-[![Market](https://img.shields.io/badge/Market-NSE%20India%20%7C%20INR%20%E2%82%B9-red.svg)](https://www.nseindia.com/)
+[![Market](https://img.shields.io/badge/Market-NSE%20%7C%20INR%20%E2%82%B9-red.svg)](https://www.nseindia.com/)
 
-An advanced, full-stack investment portfolio analytics and quantitative risk management platform built for the **Indian Stock Market (NSE)**. 
+An advanced, full-stack investment portfolio analytics and quantitative risk management platform built for equity markets and benchmark tracking. 
 
 FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-performance **Python FastAPI** quantitative computing engine, and a Bloomberg/Zerodha-inspired **React 19** financial terminal with instant **Light Mode (☀️) & Dark Mode (🌙)** support.
 
@@ -46,9 +46,9 @@ FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-p
 
 ## 2. Key Capabilities & Feature Modules
 
-### 📈 Indian Equities & Portfolio Management
-- **NSE Universe Support**: Tracks top Indian equities (**RELIANCE, TCS, HDFCBANK, INFY, ICICIBANK, BHARTIARTL, ITC, LT, SBIN, TATAMOTORS**) and the **NIFTYBEES** benchmark ETF.
-- **Transactional Ledger**: Automatically recalculates volume-weighted average cost basis and real-time Unrealized P&L in Indian Rupees (`₹`) upon recording buy or sell orders.
+### 📈 Multi-Asset Equities & Portfolio Management
+- **NSE Universe Support**: Tracks top benchmark equities (**RELIANCE, TCS, HDFCBANK, INFY, ICICIBANK, BHARTIARTL, ITC, LT, SBIN, TATAMOTORS**) and the **NIFTYBEES** benchmark ETF.
+- **Transactional Ledger**: Automatically recalculates volume-weighted average cost basis and real-time Unrealized P&L in Rupees (`₹`) upon recording buy or sell orders.
 - **Live Market Watch**: Real-time price tracking with interactive daily OHLC candlestick charts and volume bars.
 
 ### 🛡️ Risk & Safety Limits
@@ -66,7 +66,7 @@ FinEdge combines an enterprise **Java Spring Boot** transactional core, a high-p
 ### 🎲 Future Money Predictor (Stochastic Monte Carlo)
 - Simulates **10,000 correlated price paths** forward across 252 trading days.
 - Retains cross-asset variance using **Cholesky factor decomposition** ($L L^T = \Sigma$).
-- Plots 5th, 25th, 50th (Median), 75th, and 95th percentile outcome fans in Indian Rupees (`₹`).
+- Plots 5th, 25th, 50th (Median), 75th, and 95th percentile outcome fans in Rupees (`₹`).
 
 ### 💥 Macroeconomic Stress Testing (Crash Testing)
 - Simulates how your portfolio would perform during major financial shocks:

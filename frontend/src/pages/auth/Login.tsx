@@ -78,7 +78,7 @@ export const Login: React.FC = () => {
           <div>
             <h1 className="text-lg font-bold tracking-tight text-white leading-tight">FINEDGE</h1>
             <p className="text-xs font-mono text-fin-blue font-semibold uppercase">
-              Indian Portfolio Risk &amp; Performance Terminal
+              Portfolio Risk &amp; Performance Terminal
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@ export const Login: React.FC = () => {
               </span>
             </div>
             <p className="text-[11px] text-fin-muted mb-3 leading-relaxed">
-              Experience the full Indian investment terminal with 11 pre-loaded bluechips and Nifty 50 benchmarks.
+              Experience the full investment terminal with 11 pre-loaded bluechips and Nifty 50 benchmarks.
             </p>
             <Button
               type="button"

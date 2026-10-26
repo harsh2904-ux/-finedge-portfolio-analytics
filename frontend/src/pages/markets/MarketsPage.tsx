@@ -79,10 +79,10 @@ export const MarketsPage: React.FC = () => {
         <div>
           <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-fin-blue" />
-            Live Market Watch (Indian Bluechips & ETFs)
+            Live Market Watch (Bluechips &amp; ETFs)
           </h1>
           <p className="text-xs text-fin-muted mt-0.5">
-            Live prices, daily candlestick charts, and market data for top Indian companies in INR (₹)
+            Live prices, daily candlestick charts, and market data for top companies in INR (₹)
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export const MarketsPage: React.FC = () => {
           <div>
             <div className="font-semibold text-white">National Stock Exchange (NSE) Active Feed</div>
             <div className="text-fin-muted">
-              Live quotes and historical candlestick data for top Indian bluechips and benchmark ETFs. Click any row to view candlestick chart.
+              Live quotes and historical candlestick data for top bluechips and benchmark ETFs. Click any row to view candlestick chart.
             </div>
           </div>
         </div>

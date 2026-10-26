@@ -103,7 +103,7 @@ export const DashboardPage: React.FC = () => {
             )}
           </h1>
           <p className="text-xs text-fin-muted mt-0.5">
-            Real-time Indian stock valuations, risk safety indicators, and factor attribution
+            Real-time portfolio valuations, risk safety indicators, and factor attribution
           </p>
         </div>
 
@@ -214,7 +214,7 @@ export const DashboardPage: React.FC = () => {
           </div>
           <div className="px-3 py-1.5 rounded-lg bg-fin-panel border border-fin-border">
             <span className="text-fin-muted block text-[10px]">Companies Owned</span>
-            <span className="text-fin-blue font-bold">{positions.length} Indian Stocks</span>
+            <span className="text-fin-blue font-bold">{positions.length} Active Holdings</span>
           </div>
         </div>
       </div>
@@ -283,7 +283,7 @@ export const DashboardPage: React.FC = () => {
           <div>
             <div className="font-semibold text-white">Is my money safe here?</div>
             <div className="text-fin-muted text-[11px] mt-0.5">
-              <strong className="text-fin-emerald">Yes, well protected.</strong> Your money is spread across 11 different Indian companies and Gold.
+              <strong className="text-fin-emerald">Yes, well protected.</strong> Your money is spread across 11 different companies and Gold.
             </div>
           </div>
         </div>
@@ -475,7 +475,7 @@ export const DashboardPage: React.FC = () => {
           </div>
           <div className="p-3 rounded-lg bg-fin-bg/60 border border-fin-border/50">
             <span className="font-semibold text-white block mb-1">3. Optimization & Rebalancing</span>
-            Use the "Optimize" button to let the Markowitz algorithm suggest weight adjustments across your Indian stocks to maximize compound returns.
+            Use the "Optimize" button to let the Markowitz algorithm suggest weight adjustments across your holdings to maximize compound returns.
           </div>
         </div>
       </div>

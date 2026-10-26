@@ -77,7 +77,7 @@ export const DiversificationPage: React.FC = () => {
             Diversification Check (Are All Eggs in One Basket?)
           </h1>
           <p className="text-xs text-fin-muted mt-0.5">
-            Make sure your money is spread safely across different Indian industries and Gold ETF so one bad stock won't hurt your savings
+            Make sure your money is spread safely across different industries and Gold ETF so one bad stock won't hurt your savings
           </p>
         </div>
       </div>

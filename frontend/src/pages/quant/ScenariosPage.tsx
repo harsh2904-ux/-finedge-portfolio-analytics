@@ -136,7 +136,7 @@ export const ScenariosPage: React.FC = () => {
       {/* Custom Shock Interactive Builder */}
       <Card
         title="Custom Market Crash Simulator"
-        subtitle="Test what happens to your savings if the Indian stock market suddenly drops by 10%, 15%, or 20%"
+        subtitle="Test what happens to your savings if the stock market suddenly drops by 10%, 15%, or 20%"
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Input
@@ -191,7 +191,7 @@ export const ScenariosPage: React.FC = () => {
       {/* Historical Crisis Impact Ledger */}
       <Card
         title="Past Market Crises Replay"
-        subtitle="See how your current portfolio of Indian stocks would have behaved in famous past crises"
+        subtitle="See how your current portfolio of stocks would have behaved in famous past crises"
         noPadding
       >
         <div className="overflow-x-auto">
@@ -253,7 +253,7 @@ export const ScenariosPage: React.FC = () => {
           <span>💡 Why Run Stress Testing?</span>
         </h3>
         <p className="text-xs text-fin-muted leading-relaxed">
-          Stress tests simulate how unexpected crises—like a global liquidity crunch, crude oil spike, or sudden interest rate hike—would impact your Indian equities. If a scenario causes too high a loss for your comfort, consider hedging or allocating a portion into <strong className="text-white">GOLDBEES</strong> (Gold ETF) or high-quality defensive bluechips.
+          Stress tests simulate how unexpected crises—like a global liquidity crunch, crude oil spike, or sudden interest rate hike—would impact your equities. If a scenario causes too high a loss for your comfort, consider hedging or allocating a portion into <strong className="text-white">GOLDBEES</strong> (Gold ETF) or high-quality defensive bluechips.
         </p>
       </div>
     </div>
